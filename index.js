@@ -17,12 +17,16 @@ const PORT = process.env.PORT || 10000;
 const OFFICIAL_EMAIL = process.env.OFFICIAL_EMAIL;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
+/* ---------------- HEALTH ---------------- */
+
 app.get("/health", (req, res) => {
   return res.status(200).json({
     is_success: true,
     official_email: OFFICIAL_EMAIL
   });
 });
+
+/* ---------------- BFHL ---------------- */
 
 app.post("/bfhl", async (req, res) => {
   try {
@@ -98,6 +102,8 @@ app.post("/bfhl", async (req, res) => {
   }
 });
 
-const serverless = require("serverless-http");
-module.exports = serverless(app);
+/* ---------------- START SERVER ---------------- */
 
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
