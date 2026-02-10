@@ -98,6 +98,6 @@ app.post("/bfhl", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+const serverless = require("serverless-http");
+module.exports = serverless(app);
+
